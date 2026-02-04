@@ -6,6 +6,6 @@ import Layout from './components/Layout.vue';
 <Layout/>
 </template>
 
-<style>
-
+<style lang="scss">
+@use './assets/sass/reset.scss' as *;
 </style>
