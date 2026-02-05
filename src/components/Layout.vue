@@ -1,8 +1,8 @@
 <script setup>
-import Navigation from './nav/NavMain.vue';
+import SiteNavigation from './nav/NavMain.vue';
 </script>
 <template>
-    <Navigation />
+    <SiteNavigation />
 </template>
 <style scoped lang="scss">
 @use '../assets/sass/fonts.scss' as *;
