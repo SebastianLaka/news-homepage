@@ -17,9 +17,16 @@ const headerImage = ref({
   </header>
 </template>
 <style lang="scss" scoped>
+@use '../../assets/sass/mixins.scss' as *;
 @media (min-width: 375px) {
   .news-header {
     padding-top: 4.5em;
+    @include flex-layout($flex-direction: column);
+    gap: 1.5em 0;
+    .news-header-content {
+      @include flex-layout($flex-direction: column);
+      gap: 1em 0;
+    }
   }
 }
 </style>

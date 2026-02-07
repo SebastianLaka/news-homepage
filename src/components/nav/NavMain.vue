@@ -79,6 +79,7 @@ const navItems = ref([
     .mobile-nav {
       @include flex-layout($flex-direction: column, $justify-content: center);
       gap: 1em 0;
+      padding: 1em;
       position: absolute;
       top: 0;
       bottom: 0;

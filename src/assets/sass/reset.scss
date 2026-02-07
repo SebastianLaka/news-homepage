@@ -1,3 +1,5 @@
+@use './fonts.scss' as *;
+@use './colors.scss' as *;
 *,
 *::before,
 *::after {
@@ -10,16 +12,25 @@ h2,
 h3,
 h4,
 h5,
-h6,
+h6{
+  font-family: 'Inter', sans-serif;
+  font-weight: $ultra-bold-weight;
+}
 p,
 a,
-span {
+span{
   font-family: 'Inter', sans-serif;
+  font-size: $main-size;
+  font-weight: $light-weight;
+  color: getColor('dark-grayish-blue');
+  line-height: 150%;
 }
 button {
+  font-family: 'Inter', sans-serif;
   cursor: pointer;
 }
 img {
   display: block;
-  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
