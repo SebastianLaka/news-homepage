@@ -1,11 +1,9 @@
 <script setup>
 const props = defineProps({
     src: String,
-    alt: String
+    alt: String,
 })
 </script>
 <template>
-    <img :src="props.src" :alt="props.alt">
+    <img :src="props.src" :alt="props.alt" :isMobile="props.isMobile">
 </template>
-<style lang="scss" scoped>
-</style>

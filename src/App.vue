@@ -8,7 +8,5 @@ import Layout from './components/Layout.vue';
 
 <style lang="scss">
 @use './assets/sass/reset.scss' as *;
-body{
-    padding: 1em;
-}
+
 </style>
