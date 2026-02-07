@@ -87,7 +87,7 @@ const navItems = ref([
       bottom: 0;
       left: 25%;
       right: 0;
-      background-color: $off-white;
+      background-color: getColor('off-white');
       height: 100svh;
       z-index: -1;
     }

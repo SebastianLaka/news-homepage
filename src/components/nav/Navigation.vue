@@ -19,11 +19,11 @@ const props = defineProps({
     list-style-type: none;
     &__link {
       text-decoration: none;
-      color: $very-dark-blue;
+      color: getColor('very-dark-blue');
       font-size: 1.25rem;
       transition: color .3s ease-in-out;
       &:hover{
-        color: $soft-red;
+        color: getColor('soft-red');
       }
     }
   }
@@ -31,7 +31,7 @@ const props = defineProps({
 @media (min-width: 992px){
 .nav-item {
   &__link {
-    color: $dark-grayish-blue;
+    color: getColor('dark-grayish-blue');
     font-size: $main-size;
   }
 }
