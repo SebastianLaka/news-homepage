@@ -25,21 +25,26 @@ import HeaderContent from './HeaderContent.vue'
 @media (min-width: 375px) {
   .news-header-content {
     @include flex-layout($flex-direction: column, $align-items: start);
-    gap: .75em 0;
+    gap: 0.75em 0;
     padding-right: 1em;
-    &__header{
-        font-size: 3rem;
+    &__header {
+      font-size: 3rem;
     }
-    &__description{
-        max-width: 50ch;
+    &__description {
+      max-width: 50ch;
     }
-    &__cta{
-        padding: 1em 2em;
-        text-transform: uppercase;
-        letter-spacing: .15em;
-        font-weight: $bold-weight;
-        border: none;
-        background-color: getColor('soft-red');
+    &__cta {
+      padding: 1em 2em;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: $bold-weight;
+      border: none;
+      background-color: getColor('soft-red');
+      transition: background-color 0.3s ease-in-out, color .3s ease-in-out;
+      &:hover {
+        background-color: getColor('very-dark-blue');
+        color: getColor('off-white');
+      }
     }
   }
 }
