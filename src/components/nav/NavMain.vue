@@ -64,11 +64,10 @@ const navItems = ref([
 </template>
 <style lang="scss" scoped>
 @use '../../assets/sass/colors.scss' as *;
+@use '../../assets/sass/mixins.scss' as *;
 @media (min-width: 375px) {
   .nav-main {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-layout($flex-direction: row , $justify-content: space-between, $align-items: center);
     position: fixed;
     z-index: 10;
     left: 0;
@@ -78,9 +77,7 @@ const navItems = ref([
       border: none;
     }
     .mobile-nav {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      @include flex-layout($flex-direction: column, $justify-content: center);
       gap: 1em 0;
       position: absolute;
       top: 0;
@@ -105,7 +102,7 @@ const navItems = ref([
 @media (min-width: 992px) {
   .nav-main {
     .desktop-nav {
-      display: flex;
+      @include flex-layout();
       gap: 0 2em;
     }
   }
