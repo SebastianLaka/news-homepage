@@ -1,10 +1,23 @@
 <script setup>
-import HeaderContent from './HeaderContent.vue'
+import { ref, onMounted, onUnmounted } from 'vue';
+import HeaderContent from './HeaderContent.vue';
+const mobileSize = ref(false);
+const checkScreen = () => {
+  mobileSize.value = window.innerWidth <= 992;
+}
+onMounted(() => {
+  checkScreen();
+  window.addEventListener('resize', checkScreen);
+})
+onUnmounted(() => {
+  checkScreen();
+  window.removeEventListener('resize', checkScreen);
+})
 </script>
 <template>
   <HeaderContent>
-    <template #header-image="{ mobileImage, alt }">
-      <img :src="mobileImage" :alt="alt" />
+    <template #header-image="{ mobileImage, desktopImage, alt }">
+      <img :src="mobileSize ? mobileImage : desktopImage" :alt="alt" />
     </template>
     <template #header-content>
       <div class="news-header-content">
@@ -26,7 +39,7 @@ import HeaderContent from './HeaderContent.vue'
   .news-header-content {
     @include flex-layout($flex-direction: column, $align-items: start);
     gap: 0.75em 0;
-    padding-right: 1em;
+    padding: 0 1em 0 .5em;
     &__header {
       font-size: 3rem;
     }
