@@ -25,7 +25,7 @@ const headerImage = ref({
 }
 @media (min-width: 992px){
   .news-header{
-    grid-column: 1/8;
+    grid-column: 1/9;
   }
 }
 @media (min-width: 1300px){

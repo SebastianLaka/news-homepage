@@ -72,7 +72,7 @@ const newsTopics = ref([
 @media (min-width: 992px) {
   .news-articles {
     padding-top: 5.5em;
-    grid-column: 8 / 13;
+    grid-column: 9 / 13;
   }
 }
 @media (min-width: 1300px) {

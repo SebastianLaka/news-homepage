@@ -28,7 +28,6 @@ import TopArticles from './top-articles/TopArticlesMain.vue';
   .main-content{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    
     gap: 2em 1em;
   }
 }
