@@ -41,7 +41,7 @@ const newsTopics = ref([
     @include flex-layout($flex-direction: column, $justify-content: space-evenly);
     background-color: getColor('very-dark-blue');
     padding: 1.5em;
-    gap: 0.5em 0;
+    gap: 1.5em 0;
     &__header {
       color: getColor('soft-orange');
     }
@@ -56,6 +56,11 @@ const newsTopics = ref([
       &__header {
         color: getColor('off-white');
         font-size: 1.1rem;
+        cursor: pointer;
+        transition: color .3s ease-in-out;
+        &:hover {
+          color: getColor('soft-orange');
+        }
       }
       &__description {
         padding-bottom: 1.85em;
