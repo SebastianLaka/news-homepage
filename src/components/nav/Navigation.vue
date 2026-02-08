@@ -22,6 +22,7 @@ const props = defineProps({
       color: getColor('very-dark-blue');
       font-size: 1.25rem;
       transition: color .3s ease-in-out;
+      padding: .5em;
       &:hover{
         color: getColor('soft-red');
       }

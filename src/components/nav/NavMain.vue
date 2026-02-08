@@ -73,6 +73,7 @@ const navItems = ref([
     left: 0;
     right: 0;
     padding: 1em;
+    background-color: getColor('off-white');
     &__icon {
       border: none;
     }
