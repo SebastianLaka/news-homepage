@@ -1,6 +1,11 @@
-<script setup></script>
+<script setup>
+
+</script>
 <template>
-    <slot name="top-articles"></slot>
+    <div class="top-article-wrapper">
+        <slot name="top-articles"></slot>
+    </div>
+    
 </template>
 <style lang="scss" scoped>
 </style>

@@ -29,10 +29,14 @@ const topArticles = ref([
 ])
 </script>
 <template>
-  <TopArticles v-for="topArticle in topArticles" :key="topArticle.id">
-    <template #top-articles>
+  <TopArticles
+    v-for="topArticle in topArticles"
+    :key="topArticle.id"
+    :class="`article-item-${topArticle.id}`"
+  >
+    <template #top-articles :class="`item-${topArticle.id}`">
       <div class="top-article">
-        <img :src="topArticle.image" :alt="topArticle.alt" class="top-article__image"/>
+        <img :src="topArticle.image" :alt="topArticle.alt" class="top-article__image" />
         <div class="article-content">
           <h1 class="article-content__article-number">0{{ topArticle.id }}</h1>
           <h2 class="article-content__header">{{ topArticle.title }}</h2>
@@ -48,28 +52,54 @@ const topArticles = ref([
 @use '../../assets/sass/colors.scss' as *;
 @media (min-width: 375px) {
   .top-article {
-    @include flex-layout($align-items: stretch); 
+    @include flex-layout($align-items: stretch);
     gap: 0 1.5em;
-    &__image{
-        object-fit: cover;
-        max-width: 30%;
+    &__image {
+      object-fit: cover;
+      max-width: 30%;
+    }
+    .article-content {
+      @include flex-layout($flex-direction: column, $justify-content: center);
+      gap: 1em 0;
+      padding-right: 0.25em;
+      &__article-number {
+        color: getColor('soft-red');
+        font-size: 2.25rem;
+      }
+      &__header {
+        transition: color 0.3s ease-in-out;
+        cursor: pointer;
+        font-size: 1rem;
+        &:hover {
+          color: getColor('soft-red');
+        }
+      }
+      &__about{
+        max-width: 30ch;
+      }
+    }
+  }
+}
+@media (min-width: 992px) {
+  .top-article {
+    gap: 0 1em;
+    &__image {
+      max-width: 35%;
     }
     .article-content{
-        @include flex-layout($flex-direction: column, $justify-content: center);
-        gap: 1em 0;
-        padding-right: .25em;
-        &__article-number{
-            color: getColor('soft-red');
-            font-size: 2.25rem;
-        }
-        &__header{
-            transition: color .3s ease-in-out;
-            cursor: pointer;
-            &:hover{
-                color: getColor('soft-red');
-            }
-        }
+        padding: 0;
+        gap: 0;
     }
+  }
+  .article-item-1 {
+    grid-column: 1 / 5;
+    grid-row: 2/2;
+  }
+  .article-item-2 {
+    grid-column: 5/9;
+  }
+  .article-item-3 {
+    grid-column: 9/13;
   }
 }
 </style>
