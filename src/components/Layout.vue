@@ -2,12 +2,14 @@
 import SiteNavigation from './nav/NavMain.vue'
 import HeaderMain from './header/HeaderMain.vue';
 import NewsMain from './news-articles/NewsMain.vue';
+import TopArticles from './top-articles/TopArticlesMain.vue';
 </script>
 <template>
   <main class="main-content">
     <SiteNavigation />
     <HeaderMain />
     <NewsMain />
+    <TopArticles />
   </main>
 </template>
 <style scoped lang="scss">
@@ -27,7 +29,6 @@ import NewsMain from './news-articles/NewsMain.vue';
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(2, 1fr);
- 
   }
 }
 </style>
