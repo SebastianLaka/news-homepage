@@ -59,6 +59,7 @@ const newsTopics = ref([
       }
       &__description {
         padding-bottom: 1.85em;
+        color: getColor('grayish-blue');
       }
     }
   }
@@ -71,7 +72,7 @@ const newsTopics = ref([
 }
 @media (min-width: 1300px) {
   .news-articles {
-    grid-column: 8/12;
+    grid-column: 8/11;
   }
 }
 </style>
