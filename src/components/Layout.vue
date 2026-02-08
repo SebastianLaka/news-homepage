@@ -13,4 +13,10 @@ import HeaderMain from './header/HeaderMain.vue';
 .main-content {
   min-height: 100svh;
 }
+@media (min-width: 992px){
+  .main-content{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
 </style>

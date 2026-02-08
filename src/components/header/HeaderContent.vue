@@ -23,4 +23,14 @@ const headerImage = ref({
     gap: 1.5em 0;
   }
 }
+@media (min-width: 992px){
+  .news-header{
+    grid-column: 1/8;
+  }
+}
+@media (min-width: 1300px){
+  .news-header{
+    grid-column: 3/8;
+  }
+}
 </style>
