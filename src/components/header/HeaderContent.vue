@@ -16,21 +16,22 @@ const headerImage = ref({
 </template>
 <style lang="scss" scoped>
 @use '../../assets/sass/mixins.scss' as *;
-@media (min-width: 375px) {
+@use '../../assets/sass/breakpoints.scss' as *;
+@media (min-width: $mobile-view) {
   .news-header {
     padding-top: 4.5em;
     @include flex-layout($flex-direction: column);
     gap: 1.5em 0;
   }
 }
-@media (min-width: 992px){
+@media (min-width: $desktop-small){
   .news-header{
     grid-column: 1/9;
   }
 }
-@media (min-width: 1300px){
+@media (min-width: $desktop-wide){
   .news-header{
-    grid-column: 3/8;
+    grid-column: 2/9;
   }
 }
 </style>

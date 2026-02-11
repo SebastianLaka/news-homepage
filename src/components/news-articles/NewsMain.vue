@@ -36,7 +36,8 @@ const newsTopics = ref([
 @use '../../assets/sass/mixins.scss' as *;
 @use '../../assets//sass/fonts.scss' as *;
 @use '../../assets/sass/colors.scss' as *;
-@media (min-width: 375px) {
+@use '../../assets/sass/breakpoints.scss' as *;
+@media (min-width: $mobile-view) {
   .news-articles {
     @include flex-layout($flex-direction: column, $justify-content: space-evenly);
     background-color: getColor('very-dark-blue');
@@ -69,15 +70,15 @@ const newsTopics = ref([
     }
   }
 }
-@media (min-width: 992px) {
+@media (min-width: $desktop-small) {
   .news-articles {
     padding-top: 5.5em;
     grid-column: 9 / 13;
   }
 }
-@media (min-width: 1300px) {
+@media (min-width: $desktop-wide) {
   .news-articles {
-    grid-column: 8/11;
+    grid-column: 9/12;
   }
 }
 </style>

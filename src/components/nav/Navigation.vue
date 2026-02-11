@@ -1,10 +1,12 @@
 <script setup>
+import { ref } from 'vue';
 const props = defineProps({
   navItem: {
     type: String,
     required: true,
   },
 })
+
 </script>
 <template>
   <li class="nav-item">
@@ -14,28 +16,36 @@ const props = defineProps({
 <style lang="scss" scoped>
 @use '../../assets/sass/colors.scss' as *;
 @use '../../assets/sass/fonts.scss' as *;
-@media (min-width: 375px) {
+@use '../../assets/sass/breakpoints.scss' as *;
+@media (min-width: $mobile-view) {
   .nav-item {
     list-style-type: none;
     &__link {
       text-decoration: none;
       color: getColor('very-dark-blue');
       font-size: 1.25rem;
-      transition: color .3s ease-in-out;
-      padding: .5em;
-      &:hover{
+      transition: color 0.3s ease-in-out;
+      padding: 0.5em;
+      &:hover {
         color: getColor('soft-red');
       }
     }
   }
 }
-@media (min-width: 992px){
-.nav-item {
-  &__link {
-    color: getColor('dark-grayish-blue');
-    font-size: $main-size;
+@media (min-width: $desktop-small) {
+  .nav-item {
+    &__link {
+      color: getColor('dark-grayish-blue');
+      font-size: $main-size;
+    }
   }
 }
+@media (min-width: $desktop-wide){
+  .nav-item{
+    &__link{
+      padding: .5em .2em;
+    }
+    
+  }
 }
-
 </style>

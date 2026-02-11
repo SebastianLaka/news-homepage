@@ -37,7 +37,8 @@ onUnmounted(() => {
 @use '../../assets/sass/mixins.scss' as *;
 @use '../../assets//sass/fonts.scss' as *;
 @use '../../assets/sass/colors.scss' as *;
-@media (min-width: 375px) {
+@use '../../assets/sass/breakpoints.scss' as *;
+@media (min-width: $mobile-view) {
   .news-header-content {
     @include flex-layout($flex-direction: column, $align-items: start);
     gap: 0.75em 0;
@@ -74,7 +75,7 @@ onUnmounted(() => {
     }
   }
 }
-@media (min-width: 992px) {
+@media (min-width: $desktop-small) {
   .news-header-content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -88,9 +89,12 @@ onUnmounted(() => {
     }
   }
 }
-@media (min-width: 1300px){
+@media (min-width: $desktop-wide){
   .news-header-content{
-    gap: 0 2em;
+    gap: 0;
+    &__header{
+      padding-right: 1em;
+    }
   }
 }
 </style>

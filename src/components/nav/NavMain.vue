@@ -40,9 +40,9 @@ onUnmounted(() => {
 
 const navItems = ref([
   { id: 1, content: 'Home' },
-  { id: 2, content: 'New' },
-  { id: 3, content: 'Popular' },
-  { id: 4, content: 'Trending' },
+  { id: 2, content: 'New', desktopPadding: .5 },
+  { id: 3, content: 'Popular', desktopPadding: .5 },
+  { id: 4, content: 'Trending', desktopPadding: .5 },
   { id: 5, content: 'Categories' },
 ])
 </script>
@@ -65,9 +65,14 @@ const navItems = ref([
 <style lang="scss" scoped>
 @use '../../assets/sass/colors.scss' as *;
 @use '../../assets/sass/mixins.scss' as *;
-@media (min-width: 375px) {
+@use '../../assets/sass/breakpoints.scss' as *;
+@media (min-width: $mobile-view) {
   .nav-main {
-    @include flex-layout($flex-direction: row , $justify-content: space-between, $align-items: center);
+    @include flex-layout(
+      $flex-direction: row,
+      $justify-content: space-between,
+      $align-items: center
+    );
     position: fixed;
     z-index: 10;
     left: 0;
@@ -101,7 +106,7 @@ const navItems = ref([
     }
   }
 }
-@media (min-width: 992px) {
+@media (min-width: $desktop-small) {
   .nav-main {
     .desktop-nav {
       @include flex-layout();
@@ -109,17 +114,26 @@ const navItems = ref([
     }
   }
 }
-@media (min-width: 1300px) {
+@media (min-width: $desktop-wide) {
   .nav-main {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     padding: 1em 0;
     &__logo {
-      grid-column: 3/4;
+      grid-column: 2/4;
     }
     .desktop-nav {
-      grid-column: 8/13;
+      grid-column: 7/12;
+      justify-self: end;
+      gap: 0 1em;
     }
+  }
+}
+@media (min-width: $desktop-ultra-wide){
+  .nav-main{
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
   }
 }
 </style>

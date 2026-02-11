@@ -52,7 +52,8 @@ const topArticles = ref([
 @use '../../assets/sass/mixins.scss' as *;
 @use '../../assets//sass/fonts.scss' as *;
 @use '../../assets/sass/colors.scss' as *;
-@media (min-width: 375px) {
+@use '../../assets/sass/breakpoints.scss' as *;
+@media (min-width: $mobile-view) {
   .top-article-main {
     @include flex-layout($flex-direction: column);
     gap: 1.5em 0;
@@ -86,7 +87,7 @@ const topArticles = ref([
     }
   }
 }
-@media (min-width: 992px) {
+@media (min-width: $desktop-small) {
   .top-article-main {
     grid-column: 1/-1;
     display: grid;
@@ -103,9 +104,16 @@ const topArticles = ref([
     }
   }
 }
-@media (min-width: 1300px){
-  .top-article-main{
-    grid-column: 3/10;
+@media (min-width: $desktop-wide) {
+  .top-article-main {
+    grid-column: 2/12;
+    justify-content: center;
+    .top-article {
+      &__image {
+        max-width: 30%;
+      }
+    }
+   
   }
 }
 </style>

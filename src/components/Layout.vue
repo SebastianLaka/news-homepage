@@ -15,20 +15,28 @@ import TopArticles from './top-articles/TopArticlesMain.vue';
 <style scoped lang="scss">
 @use '../assets/sass/fonts.scss' as *;
 @use '../assets/sass/mixins.scss' as *;
+@use '../assets/sass/breakpoints.scss' as *;
 .main-content {
   min-height: 100svh;
 }
-@media (min-width: 375px){
+@media (min-width: $mobile-view){
   .main-content{
     @include flex-layout($flex-direction: column);
     gap: 2em;
   }
 }
-@media (min-width: 992px){
+@media (min-width: $desktop-small){
   .main-content{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 2em 1em;
+    gap: 1.5em;
+  }
+}
+@media (min-width: $desktop-ultra-wide){
+  .main-content{
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
   }
 }
 </style>
