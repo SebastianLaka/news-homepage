@@ -32,7 +32,7 @@ import TopArticles from './top-articles/TopArticlesMain.vue';
     gap: 1.5em;
   }
 }
-@media (min-width: $desktop-ultra-wide){
+@media (min-width: $desktop-wide){
   .main-content{
     max-width: 1440px;
     width: 100%;

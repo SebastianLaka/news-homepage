@@ -61,12 +61,14 @@ const topArticles = ref([
       @include flex-layout($align-items: stretch);
       gap: 0 1.5em;
       &__image {
+        width: 100px; 
+        height: 125px; 
         object-fit: cover;
-        max-width: 30%;
+ 
       }
       .article-content {
         @include flex-layout($flex-direction: column, $justify-content: center);
-        gap: 1em 0;
+        gap: .5em 0;
         padding-right: 0.25em;
         &__article-number {
           color: getColor('soft-red');
@@ -81,7 +83,7 @@ const topArticles = ref([
           }
         }
         &__about {
-          max-width: 30ch;
+          max-width: 25ch;
         }
       }
     }
@@ -89,31 +91,30 @@ const topArticles = ref([
 }
 @media (min-width: $desktop-small) {
   .top-article-main {
-    grid-column: 1/-1;
+    grid-column: 1 / 13;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 0 1em;
+    gap: 0 1.5em;
     .article-item-1 {
       grid-column: 1 / 5;
     }
     .article-item-2 {
-      grid-column: 5/9;
+      grid-column: 5 / 9;
     }
     .article-item-3 {
-      grid-column: 9/13;
+      grid-column: 9 / 13;
     }
   }
 }
 @media (min-width: $desktop-wide) {
   .top-article-main {
     grid-column: 2/12;
-    justify-content: center;
+    gap: 0 5em;
     .top-article {
-      &__image {
-        max-width: 30%;
+      .article-content {
+        padding-right: 0;
       }
     }
-   
   }
 }
 </style>
