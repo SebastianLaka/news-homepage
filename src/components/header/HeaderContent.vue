@@ -19,13 +19,14 @@ const headerImage = ref({
 @use '../../assets/sass/breakpoints.scss' as *;
 @media (min-width: $mobile-view) {
   .news-header {
-    padding-top: 4.5em;
+    margin-top: 4.5em;
     @include flex-layout($flex-direction: column);
     gap: 1.5em 0;
   }
 }
 @media (min-width: $desktop-small){
   .news-header{
+    margin-top: 6.5em;
     grid-column: 1/9;
   }
 }

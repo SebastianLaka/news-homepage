@@ -72,7 +72,7 @@ const newsTopics = ref([
 }
 @media (min-width: $desktop-small) {
   .news-articles {
-    padding-top: 5.5em;
+    margin-top: 6.5em;
     grid-column: 9 / 13;
   }
 }
