@@ -41,7 +41,7 @@ onUnmounted(() => {
 @media (min-width: $mobile-view) {
   .news-header-content {
     @include flex-layout($flex-direction: column, $align-items: start);
-    gap: 0.75em 0;
+    @include set-gap($row-gap: 0.75em);
     padding: 0 1em 0 0.5em;
     &__header {
       font-size: 3rem;
@@ -52,7 +52,7 @@ onUnmounted(() => {
         $justify-content: space-between,
         $align-items: start
       );
-      gap: 1.25em 0;
+      @include set-gap($row-gap: 1.5em);
       height: 100%;
       &__description {
         max-width: 65ch;
@@ -77,22 +77,21 @@ onUnmounted(() => {
 }
 @media (min-width: $desktop-small) {
   .news-header-content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0 1em;
+    @include grid-layout($columns: 2);
+    @include set-gap($column-gap: 2em);
     padding: 0 0 0 0.5em;
     .header-content-description {
-      grid-column: 2/2;
+      @include grid-child(2,2);
       &__description {
         max-width: 40ch;
       }
     }
   }
 }
-@media (min-width: $desktop-wide){
-  .news-header-content{
-    gap: 0;
-    &__header{
+@media (min-width: $desktop-wide) {
+  .news-header-content {
+    @include set-gap($column-gap: 0, $row-gap: 0);
+    &__header {
       padding-right: 1em;
     }
   }

@@ -42,13 +42,13 @@ const newsTopics = ref([
     @include flex-layout($flex-direction: column, $justify-content: space-evenly);
     background-color: getColor('very-dark-blue');
     padding: 1.5em;
-    gap: 1.5em 0;
+    @include set-gap($row-gap: 2em);
     &__header {
       color: getColor('soft-orange');
     }
     .new-article-topic {
       @include flex-layout($flex-direction: column);
-      gap: 0.75em 0;
+      @include set-gap($row-gap: .75em);
       border-bottom: 0.1em solid white;
       &:last-child {
         border-bottom: none;
@@ -58,7 +58,7 @@ const newsTopics = ref([
         color: getColor('off-white');
         font-size: 1.1rem;
         cursor: pointer;
-        transition: color .3s ease-in-out;
+        transition: color 0.3s ease-in-out;
         &:hover {
           color: getColor('soft-orange');
         }
@@ -73,12 +73,12 @@ const newsTopics = ref([
 @media (min-width: $desktop-small) {
   .news-articles {
     margin-top: 6.5em;
-    grid-column: 9 / 13;
+    @include grid-child(9,13);
   }
 }
 @media (min-width: $desktop-wide) {
   .news-articles {
-    grid-column: 9/12;
+    @include grid-child(9,12);
   }
 }
 </style>

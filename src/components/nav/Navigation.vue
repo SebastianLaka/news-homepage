@@ -45,7 +45,6 @@ const props = defineProps({
     &__link{
       padding: .5em .2em;
     }
-    
   }
 }
 </style>

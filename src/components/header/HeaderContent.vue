@@ -21,18 +21,18 @@ const headerImage = ref({
   .news-header {
     margin-top: 4.5em;
     @include flex-layout($flex-direction: column);
-    gap: 1.5em 0;
+    @include set-gap($row-gap: 1.5em);
   }
 }
 @media (min-width: $desktop-small){
   .news-header{
     margin-top: 6.5em;
-    grid-column: 1/9;
+    @include grid-child(1,9);
   }
 }
 @media (min-width: $desktop-wide){
   .news-header{
-    grid-column: 2/9;
+    @include grid-child(2,9);
   }
 }
 </style>

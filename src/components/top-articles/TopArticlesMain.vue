@@ -56,19 +56,18 @@ const topArticles = ref([
 @media (min-width: $mobile-view) {
   .top-article-main {
     @include flex-layout($flex-direction: column);
-    gap: 1.5em 0;
+    @include set-gap($row-gap: 1.5em);
     .top-article {
       @include flex-layout($align-items: stretch);
-      gap: 0 1.5em;
+      @include set-gap($column-gap: 1.5em);
       &__image {
-        width: 100px; 
-        height: 125px; 
+        width: 100px;
+        height: 125px;
         object-fit: cover;
- 
       }
       .article-content {
         @include flex-layout($flex-direction: column, $justify-content: center);
-        gap: .5em 0;
+        @include set-gap($row-gap: .5em);
         padding-right: 0.25em;
         &__article-number {
           color: getColor('soft-red');
@@ -91,25 +90,24 @@ const topArticles = ref([
 }
 @media (min-width: $desktop-small) {
   .top-article-main {
-    grid-column: 1 / 13;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 0 1.5em;
+    @include grid-child(1,13);
+    @include grid-layout($columns: 12);
+    @include set-gap($column-gap: 1.5em);
     .article-item-1 {
-      grid-column: 1 / 5;
+      @include grid-child(1,5);
     }
     .article-item-2 {
-      grid-column: 5 / 9;
+      @include grid-child(5,9);
     }
     .article-item-3 {
-      grid-column: 9 / 13;
+      @include grid-child(9,13);
     }
   }
 }
 @media (min-width: $desktop-wide) {
   .top-article-main {
-    grid-column: 2/12;
-    gap: 0 5em;
+    @include grid-child(2,12);
+    @include set-gap($column-gap: 5.2em);
     .top-article {
       .article-content {
         padding-right: 0;

@@ -40,9 +40,9 @@ onUnmounted(() => {
 
 const navItems = ref([
   { id: 1, content: 'Home' },
-  { id: 2, content: 'New', desktopPadding: .5 },
-  { id: 3, content: 'Popular', desktopPadding: .5 },
-  { id: 4, content: 'Trending', desktopPadding: .5 },
+  { id: 2, content: 'New', desktopPadding: 0.5 },
+  { id: 3, content: 'Popular', desktopPadding: 0.5 },
+  { id: 4, content: 'Trending', desktopPadding: 0.5 },
   { id: 5, content: 'Categories' },
 ])
 </script>
@@ -56,6 +56,9 @@ const navItems = ref([
       <ul class="mobile-nav" v-show="isOpen">
         <Navigation v-for="navItem in navItems" :key="navItem.id" :navItem="navItem.content" />
       </ul>
+    </Transition>
+    <Transition name="slide">
+    <div v-show="isOpen" class="nav-overlay" @click="isOpen = false"></div>
     </Transition>
     <ul class="desktop-nav" v-show="isDesktop">
       <Navigation v-for="navItem in navItems" :key="navItem.id" :navItem="navItem.content" />
@@ -73,10 +76,8 @@ const navItems = ref([
       $justify-content: space-between,
       $align-items: center
     );
-    position: fixed;
-    z-index: 10;
-    left: 0;
-    right: 0;
+
+    @include position-element($position: fixed, $right: 0, $left: 0, $z-index: 10);
     padding: 1em;
     background-color: getColor('off-white');
     &__icon {
@@ -84,16 +85,18 @@ const navItems = ref([
     }
     .mobile-nav {
       @include flex-layout($flex-direction: column, $justify-content: center);
-      gap: 1em 0;
+      @include set-gap($row-gap: 2em);
       padding: 1em;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 25%;
-      right: 0;
+      @include position-element(
+        $position: absolute,
+        $top: 0,
+        $right: 0,
+        $bottom: 0,
+        $left: 25%,
+        $z-index: -1
+      );
       background-color: getColor('off-white');
       height: 100svh;
-      z-index: -1;
     }
     .slide-enter-active,
     .slide-leave-active {
@@ -104,33 +107,44 @@ const navItems = ref([
       transform: translateX(1000px);
       opacity: 0;
     }
+    
+    .nav-overlay {
+      @include position-element(
+        $position: fixed,
+        $top: 0,
+        $right: 0,
+        $bottom: 0,
+        $left: 0,
+        $z-index: -10
+      );
+      background-color: rgba(0, 0, 0, 0.5);
+    }
   }
 }
 @media (min-width: $desktop-small) {
   .nav-main {
     .desktop-nav {
       @include flex-layout();
-      gap: 0 2em;
+      @include set-gap($column-gap: 2em);
     }
   }
 }
 @media (min-width: $desktop-wide) {
   .nav-main {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    @include grid-layout($columns: 12);
     padding: 1em 0;
     &__logo {
-      grid-column: 2/4;
+      @include grid-child(2, 4);
     }
     .desktop-nav {
-      grid-column: 7/12;
+      @include grid-child(7, 12);
       justify-self: end;
-      gap: 0 1em;
+      @include set-gap($column-gap: 2em);
     }
   }
 }
-@media (min-width: $desktop-ultra-wide){
-  .nav-main{
+@media (min-width: $desktop-ultra-wide) {
+  .nav-main {
     max-width: 1440px;
     width: 100%;
     margin: 0 auto;

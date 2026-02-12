@@ -22,14 +22,13 @@ import TopArticles from './top-articles/TopArticlesMain.vue';
 @media (min-width: $mobile-view){
   .main-content{
     @include flex-layout($flex-direction: column);
-    gap: 2em;
+    @include set-gap($row-gap: 2em, $column-gap: 2em);
   }
 }
 @media (min-width: $desktop-small){
   .main-content{
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 1.5em;
+    @include grid-layout($columns: 12);
+    @include set-gap($row-gap: 1.5em, $column-gap: 1.5em);
   }
 }
 @media (min-width: $desktop-wide){
