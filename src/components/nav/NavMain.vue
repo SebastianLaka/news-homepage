@@ -57,7 +57,7 @@ const navItems = ref([
         <Navigation v-for="navItem in navItems" :key="navItem.id" :navItem="navItem.content" />
       </ul>
     </Transition>
-    <Transition name="slide">
+    <Transition name="slide-overlay">
     <div v-show="isOpen" class="nav-overlay" @click="isOpen = false"></div>
     </Transition>
     <ul class="desktop-nav" v-show="isDesktop">
@@ -104,7 +104,15 @@ const navItems = ref([
     }
     .slide-enter-from,
     .slide-leave-to {
-      transform: translateX(1000px);
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    .slide-overlay-enter-active,
+    .slide-overlay-leave-active {
+      transition: all 0.3s ease-in-out;
+    }
+    .slide-overlay-enter-from,
+    .slide-overlay-leave-to {
       opacity: 0;
     }
     
