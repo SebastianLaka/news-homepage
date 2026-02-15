@@ -27,6 +27,13 @@ const topArticles = ref([
     alt: 'Gaming pad flip at hand',
   },
 ])
+const isHover = ref(null)
+const enterArticleHover = (title) => {
+ isHover.value = title
+}
+const leaveTopArticle = () => {
+  isHover.value = null
+}
 </script>
 <template>
   <article class="top-article-main">
@@ -40,7 +47,9 @@ const topArticles = ref([
           <img :src="topArticle.image" :alt="topArticle.alt" class="top-article__image" />
           <div class="article-content">
             <h1 class="article-content__article-number">0{{ topArticle.id }}</h1>
-            <h2 class="article-content__header">{{ topArticle.title }}</h2>
+            <h2 class="article-content__header" @mouseenter="enterArticleHover(topArticle.title)"
+              @mouseleave="leaveTopArticle"
+              :class="[{ 'is-highlighted': isHover === topArticle.title }]">{{ topArticle.title }}</h2>
             <p class="article-content__about">{{ topArticle.description }}</p>
           </div>
         </div>
@@ -67,7 +76,7 @@ const topArticles = ref([
       }
       .article-content {
         @include flex-layout($flex-direction: column, $justify-content: center);
-        @include set-gap($row-gap: .5em);
+        @include set-gap($row-gap: 0.5em);
         padding-right: 0.25em;
         &__article-number {
           color: getColor('soft-red');
@@ -77,7 +86,7 @@ const topArticles = ref([
           transition: color 0.3s ease-in-out;
           cursor: pointer;
           font-size: 1rem;
-          &:hover {
+          &.is-highlighted {
             color: getColor('soft-red');
           }
         }
@@ -90,23 +99,23 @@ const topArticles = ref([
 }
 @media (min-width: $desktop-small) {
   .top-article-main {
-    @include grid-child(1,13);
+    @include grid-child(1, 13);
     @include grid-layout($columns: 12);
     @include set-gap($column-gap: 1.5em);
     .article-item-1 {
-      @include grid-child(1,5);
+      @include grid-child(1, 5);
     }
     .article-item-2 {
-      @include grid-child(5,9);
+      @include grid-child(5, 9);
     }
     .article-item-3 {
-      @include grid-child(9,13);
+      @include grid-child(9, 13);
     }
   }
 }
 @media (min-width: $desktop-wide) {
   .top-article-main {
-    @include grid-child(2,12);
+    @include grid-child(2, 12);
     @include set-gap($column-gap: 5.2em);
     .top-article {
       .article-content {

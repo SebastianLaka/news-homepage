@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import HeaderContent from './HeaderContent.vue'
 const mobileSize = ref(false)
+const isHover = ref(false)
 const checkScreen = () => {
   mobileSize.value = window.innerWidth <= 992
 }
@@ -27,7 +28,7 @@ onUnmounted(() => {
             We dive into the next evolution of the web that claims to put the power of the platforms
             back into the hands of the people. But is it really fulfilling its promise?
           </p>
-          <button class="header-content-description__cta">read more</button>
+          <button class="header-content-description__cta" @mouseenter="isHover = true" @mouseleave="isHover = false" :class="{'is-hover': isHover}">read more</button>
         </div>
       </div>
     </template>
@@ -67,7 +68,7 @@ onUnmounted(() => {
         transition:
           background-color 0.3s ease-in-out,
           color 0.3s ease-in-out;
-        &:hover {
+        &.is-hover {
           background-color: getColor('very-dark-blue');
           color: getColor('off-white');
         }
