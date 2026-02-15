@@ -12,10 +12,12 @@ import TopArticles from './top-articles/TopArticlesMain.vue';
     <NewsMain/>
     <TopArticles />
   </main>
+  <p class="site-challange-source">Challenge by <span class="site-challange-source--author">Frontend Mentor</span>. Coded by <span class="site-challange-source--source">SebastianLaka.</span> </p>
 </template>
 <style scoped lang="scss">
 @use '../assets/sass/fonts.scss' as *;
 @use '../assets/sass/mixins.scss' as *;
+@use '../assets/sass/colors.scss' as *;
 @use '../assets/sass/breakpoints.scss' as *;
 .main-content {
   min-height: 100svh;
@@ -24,6 +26,14 @@ import TopArticles from './top-articles/TopArticlesMain.vue';
   .main-content{
     @include flex-layout($flex-direction: column);
     @include set-gap($row-gap: 2em, $column-gap: 2em);
+  }
+  .site-challange-source{
+    text-align: center;
+    padding-top: 2em;
+    &--source, &--author{
+      color: getColor('soft-red');
+      font-weight: $bold-weight;
+    }
   }
 }
 @media (min-width: $desktop-small){
