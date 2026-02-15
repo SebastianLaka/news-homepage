@@ -3,12 +3,13 @@ import SiteNavigation from './nav/NavMain.vue'
 import HeaderMain from './header/HeaderMain.vue';
 import NewsMain from './news-articles/NewsMain.vue';
 import TopArticles from './top-articles/TopArticlesMain.vue';
+
 </script>
 <template>
   <main class="main-content">
     <SiteNavigation />
     <HeaderMain />
-    <NewsMain />
+    <NewsMain/>
     <TopArticles />
   </main>
 </template>

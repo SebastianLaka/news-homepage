@@ -40,11 +40,18 @@ onUnmounted(() => {
 
 const navItems = ref([
   { id: 1, content: 'Home' },
-  { id: 2, content: 'New', desktopPadding: 0.5 },
-  { id: 3, content: 'Popular', desktopPadding: 0.5 },
-  { id: 4, content: 'Trending', desktopPadding: 0.5 },
+  { id: 2, content: 'New' },
+  { id: 3, content: 'Popular' },
+  { id: 4, content: 'Trending' },
   { id: 5, content: 'Categories' },
 ])
+const itemHover = ref(false)
+const enterNavItem = (content) => {
+  itemHover.value = content
+}
+const leaveNavItem = () => {
+  itemHover.value = false
+}
 </script>
 <template>
   <nav class="nav-main">
@@ -53,15 +60,28 @@ const navItems = ref([
       <NavIcon :src="isOpen ? closeMobileIcon : mobileIcon" :alt="navIconLabel" />
     </button>
     <Transition name="slide">
-      <ul class="mobile-nav" v-show="isOpen">
-        <Navigation v-for="navItem in navItems" :key="navItem.id" :navItem="navItem.content" />
+      <ul class="mobile-nav site-navigation" v-show="isOpen">
+        <Navigation
+          v-for="navItem in navItems"
+          :key="navItem.id"
+          :navItem="navItem.content"
+          @click="getNavItem(navItem)"
+        />
       </ul>
     </Transition>
     <Transition name="slide-overlay">
-    <div v-show="isOpen" class="nav-overlay" @click="isOpen = false"></div>
+      <div v-show="isOpen" class="nav-overlay" @click="isOpen = false"></div>
     </Transition>
-    <ul class="desktop-nav" v-show="isDesktop">
-      <Navigation v-for="navItem in navItems" :key="navItem.id" :navItem="navItem.content" />
+    <ul class="desktop-nav site-navigation" v-show="isDesktop">
+      <Navigation
+        v-for="navItem in navItems"
+        :key="navItem.id"
+        :navItem="navItem.content"
+        :isHover="itemHover === navItem.content"
+        @mouseenter="enterNavItem(navItem.content)"
+        @mouseleave="leaveNavItem"
+        :class="[{ 'is-hover': itemHover === navItem.content }]"
+      />
     </ul>
   </nav>
 </template>
@@ -98,6 +118,7 @@ const navItems = ref([
       background-color: getColor('off-white');
       height: 100svh;
     }
+
     .slide-enter-active,
     .slide-leave-active {
       transition: all 0.5s ease-in-out;
@@ -115,7 +136,7 @@ const navItems = ref([
     .slide-overlay-leave-to {
       opacity: 0;
     }
-    
+
     .nav-overlay {
       @include position-element(
         $position: fixed,
@@ -134,6 +155,11 @@ const navItems = ref([
     .desktop-nav {
       @include flex-layout();
       @include set-gap($column-gap: 2em);
+      :deep(.is-hover) {
+        .nav-item__link {
+          color: getColor('soft-red');
+        }
+      }
     }
   }
 }

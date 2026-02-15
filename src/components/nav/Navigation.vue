@@ -1,15 +1,15 @@
 <script setup>
-import { ref } from 'vue';
 const props = defineProps({
   navItem: {
     type: String,
     required: true,
+    isHover: Boolean
   },
 })
 
 </script>
 <template>
-  <li class="nav-item">
+  <li class="nav-item" >
     <a href="#" class="nav-item__link">{{ props.navItem }}</a>
   </li>
 </template>
@@ -26,9 +26,6 @@ const props = defineProps({
       font-size: 1.25rem;
       transition: color 0.3s ease-in-out;
       padding: 0.5em;
-      &:hover {
-        color: getColor('soft-red');
-      }
     }
   }
 }
@@ -37,6 +34,9 @@ const props = defineProps({
     &__link {
       color: getColor('dark-grayish-blue');
       font-size: $main-size;
+      &.is-active {
+      color: getColor('soft-red');
+    }
     }
   }
 }

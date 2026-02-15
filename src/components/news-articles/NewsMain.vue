@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import NewsArticles from './NewsArticles.vue'
 const newsTopics = ref([
   {
@@ -18,6 +18,14 @@ const newsTopics = ref([
     description: ' Private funding by VC firms is down 50% YOY. We take a look at what that means.',
   },
 ])
+const newHover = ref(null)
+const setHeaderHover = (title) => {
+  newHover.value = title
+}
+const clearHover = () => {
+  newHover.value = null
+}
+
 </script>
 <template>
   <article class="news-articles">
@@ -25,7 +33,14 @@ const newsTopics = ref([
     <NewsArticles v-for="newTopic in newsTopics" :key="newTopic.id">
       <template #news-topics>
         <div class="new-article-topic">
-          <h1 class="new-article-topic__header">{{ newTopic.title }}</h1>
+          <h1
+            class="new-article-topic__header"
+            @mouseenter="setHeaderHover(newTopic.title)"
+            @mouseleave="clearHover"
+            :class="[{ 'is-highlighted': newHover === newTopic.title }]"
+          >
+            {{ newTopic.title }}
+          </h1>
           <p class="new-article-topic__description">{{ newTopic.description }}</p>
         </div>
       </template>
@@ -48,21 +63,23 @@ const newsTopics = ref([
     }
     .new-article-topic {
       @include flex-layout($flex-direction: column);
-      @include set-gap($row-gap: .75em);
+      @include set-gap($row-gap: 0.75em);
       border-bottom: 0.1em solid white;
       &:last-child {
         border-bottom: none;
         padding: 0;
       }
+
       &__header {
         color: getColor('off-white');
         font-size: 1.1rem;
         cursor: pointer;
         transition: color 0.3s ease-in-out;
-        &:hover {
-          color: getColor('soft-orange');
-        }
+        &.is-highlighted {
+        color: getColor('soft-orange');
       }
+      }
+      
       &__description {
         padding-bottom: 1.85em;
         color: getColor('grayish-blue');
@@ -73,12 +90,12 @@ const newsTopics = ref([
 @media (min-width: $desktop-small) {
   .news-articles {
     margin-top: 6.5em;
-    @include grid-child(9,13);
+    @include grid-child(9, 13);
   }
 }
 @media (min-width: $desktop-wide) {
   .news-articles {
-    @include grid-child(9,12);
+    @include grid-child(9, 12);
   }
 }
 </style>
